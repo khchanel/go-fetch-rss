@@ -1,6 +1,6 @@
 module go-fetch-rss
 
-go 1.22.3
+go 1.18
 
 require github.com/mmcdole/gofeed v1.3.0
 
