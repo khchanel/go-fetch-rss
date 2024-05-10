@@ -1,5 +1,7 @@
 # go-fetch-rss
 
+![build](https://github.com/khchanel/go-fetch-rss/actions/workflows/go.yml/badge.svg)
+
 Golang code to concurrently fetch and print RSS feeds from a predefined list of URLs
 
 
