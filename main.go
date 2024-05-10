@@ -37,7 +37,10 @@ func main() {
 	// start goroutines to fetch RSS feeds concurrently
 	for _, url := range urls {
 		wg.Add(1)
-		go fetchRSS(url, &wg, ch)
+		go func(url string) {
+			defer wg.Done()
+			fetchRSS(url, ch)
+		}(url)
 	}
 
 	// close channel after all goroutines finish
@@ -53,9 +56,7 @@ func main() {
 
 }
 
-func fetchRSS(url string, wg *sync.WaitGroup, ch chan<- *gofeed.Feed) {
-
-	defer wg.Done()
+func fetchRSS(url string, ch chan<- *gofeed.Feed) {
 
 	fp := gofeed.NewParser()
 
